@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proyecto1.Views.TareaformView"
+             xmlns:viewModel="clr-namespace:Proyecto1.ViewModels"     
+             x:DataType="viewModel:TareaFormViewModel"
+             Title="TareaformView">
+   
+        <ScrollView>
+            <VerticalStackLayout Padding="30,0,30,0" Spacing="5" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+               
+                <Label Text="Tarea:"/> 
+                <Entry Text="{Binding Descripcion}" Keyboard="Text"  Placeholder="Ingrese la tarea a hacer"/>
+            <Label Text="Estado:"/>
+            <Entry Text="{Binding Estado}" Keyboard="Text"  Placeholder="Ingrese el estado"/>
+
+
+            <Button Text="Guardar" Command="{Binding AddUpdateCommand}" />
+                
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage>

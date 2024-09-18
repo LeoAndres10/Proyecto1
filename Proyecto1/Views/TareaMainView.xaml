@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proyecto1.Views.TareaMainView"
+             xmlns:viewModel="clr-namespace:Proyecto1.ViewModels"
+             xmlns:model="clr-namespace:Proyecto1.Models"
+             x:DataType="viewModel:TareaMainViewModel"
+           BackgroundColor="Aqua"
+             Title="My TOdOs" >
+    
+        <ScrollView>
+            <VerticalStackLayout Padding="10,0,10,0">
+                <Button Text="Agregar Tarea" Command="{Binding GoToAddTareaFormCommand}" />
+
+                <Grid Margin="5,5,5,5" RowDefinitions="Auto" ColumnDefinitions="*" >
+                  <Label Text="Descripción" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="1" />
+                  
+                </Grid>
+                <CollectionView ItemsSource="{Binding TareaCollection}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Tarea">
+                            <Grid RowSpacing="0" RowDefinitions="5,Auto,5,1" ColumnDefinitions="*,*" VerticalOptions="FillAndExpand" >
+                            
+                                    <Label Text="{Binding Descripcion}" Grid.Row="1" Grid.Column="0" />
+                                    <Label Text="{Binding Estado}" Grid.Row="1" Grid.Column="1" BackgroundColor="DarkViolet"/>
+
+                            <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:TareaMainViewModel}},Path=SelectTareaCommand}" CommandParameter="{Binding .}" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            
+           
+        </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage>
+
+    
